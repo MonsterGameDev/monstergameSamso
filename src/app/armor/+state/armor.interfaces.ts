@@ -21,4 +21,5 @@ export interface ArmorState {
     showImage: boolean;
     armor: Armor[];
     selectedArmorId: number;
+    error: string;
 }
