@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "monster-madness"
+  "defaultProject": "monster-madness",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
