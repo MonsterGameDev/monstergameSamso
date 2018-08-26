@@ -1,0 +1,11 @@
+<div *ngIf="armor$ | async as armor">
+    <h2>Armor List</h2>
+    <ul *ngFor="let a of armor">
+        <li><strong>Name: {{ a.armorName }}</strong></li>
+        <li>Level: {{ a.armorLevel }}</li>
+        <li>Type: {{ a.armorType }}</li>
+        <li>Health: {{ a.armorStats?.health }}</li>
+        <li>Power: {{ a.armorStats?.power }}</li>
+        <li>Defence: {{ a.armorStats?.defence }}</li>
+      </ul>    
+</div>

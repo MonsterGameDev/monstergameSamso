@@ -13,7 +13,10 @@ export enum ArmorActionTypes {
   EDIT_ARMOR_FAIL = '[Armor] Edit Armor Fail',
   DELETE_ARMOR = '[Armor] Delete Armor',
   DELETE_ARMOR_SUCCESS = '[Armor] Delete Success',
-  DELETE_ARMOR_FAIL = '[Armor] Delete Fail'
+  DELETE_ARMOR_FAIL = '[Armor] Delete Fail',
+  SET_SELECTED_ARMOR = '[Armor] Set Selected Armor',
+  CLEAR_SELECTED_ARMOR = '[Armor] Clear Selected Armor',
+  INITIALIZE_SELECTED_ARMOR = '[Armor] Initialize Selected Armor'
 }
 
 export class LoadArmors implements Action {
@@ -27,7 +30,7 @@ export class LoadArmorsSuccess implements Action {
 
 export class LoadArmorsFail implements Action {
   readonly type = ArmorActionTypes.LOAD_ARMORS_FAIL;
-  constructor(public payload: Error) {}
+  constructor(public payload: string) {}
 }
 
 export class LoadArmor implements Action {
@@ -42,7 +45,7 @@ export class LoadArmorSuccess implements Action {
 
 export class LoadArmorFail implements Action {
   readonly type = ArmorActionTypes.LOAD_ARMOR_FAIL;
-  constructor(public payload: Error) {}
+  constructor(public payload: string) {}
 }
 
 export class EditArmor implements Action {
@@ -57,7 +60,7 @@ export class EditArmorSuccess implements Action {
 
 export class EditArmorFail implements Action {
   readonly type = ArmorActionTypes.EDIT_ARMOR_FAIL;
-  constructor(public payload: Error) {}
+  constructor(public payload: string) {}
 }
 
 export class DeleteArmor implements Action {
@@ -71,7 +74,20 @@ export class DeleteArmorSuccess implements Action {
 
 export class DeleteArmorFail implements Action {
   readonly type = ArmorActionTypes.DELETE_ARMOR_FAIL;
-  constructor(public payload: Error) {}
+  constructor(public payload: string) {}
+}
+
+export class SetSelectedArmor implements Action {
+  readonly type = ArmorActionTypes.SET_SELECTED_ARMOR;
+  constructor(public payload: Armor) {}
+}
+
+export class ClearSelectedArmor implements Action {
+  readonly type = ArmorActionTypes.CLEAR_SELECTED_ARMOR;
+}
+
+export class InitializeSelectedArmor implements Action {
+  readonly type = ArmorActionTypes.INITIALIZE_SELECTED_ARMOR;
 }
 
 export type ArmorActions =
@@ -87,4 +103,7 @@ export type ArmorActions =
   | DeleteArmor
   | DeleteArmorSuccess
   | DeleteArmorFail
+  | SetSelectedArmor
+  | ClearSelectedArmor
+  | InitializeSelectedArmor
   ;

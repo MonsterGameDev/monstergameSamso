@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Armor } from '../armor/+state/armor.interfaces';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { delay } from 'rxjs/operators';
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class DataService {
 
   getArmor(): Observable<Armor[]> {
     const url = `${this.baseUrl}/armor`;
-    return this._http.get<Armor[]>(url);
+    return this._http.get<Armor[]>(url).pipe(delay(500));
   }
 
   getArmorItem(id: number): Observable<Armor> {
