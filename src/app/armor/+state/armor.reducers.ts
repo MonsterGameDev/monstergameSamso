@@ -1,6 +1,7 @@
 import { ArmorActions, ArmorActionTypes } from './armor.actions';
-import { ArmorState, ArmorTypeEnum} from './armor.interfaces';
+import { ArmorState, ArmorTypeEnum, Armor} from './armor.interfaces';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 const initialState: ArmorState = {
     armor: [],
@@ -26,7 +27,7 @@ export function armorReducer(state: ArmorState = initialState, action: ArmorActi
         case ArmorActionTypes.SET_SELECTED_ARMOR:
             return {
                 ...state,
-                selectedArmorId: action.payload.id
+                selectedArmorId: action.payload
             };
         case ArmorActionTypes.CLEAR_SELECTED_ARMOR:
             return {
@@ -59,7 +60,7 @@ export const getSelectedArmorId = createSelector(
 export const getSelectedArmor = createSelector(
     getFeatureArmorsState,
     getSelectedArmorId,
-    (state, selectedArmorId) => {
+    (state: ArmorState, selectedArmorId: number): Armor => {
         if (selectedArmorId === 0) {
             return {
                 id: 0,
@@ -70,7 +71,8 @@ export const getSelectedArmor = createSelector(
                     health: 0,
                     power: 0,
                     defense: 0
-                }
+                },
+                imgUrl: ''
             };
         } else {
             return selectedArmorId ? state.armor.find(p => p.id === selectedArmorId) : null;

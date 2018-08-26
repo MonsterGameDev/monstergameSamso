@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 export class TestArmorstoreComponent implements OnInit {
   armor$: Observable<Armor[]>;
   errorMessage$: Observable<string>;
+  selectedArmor$: Observable<Armor>;
 
   constructor(private store: Store<ArmorState>) { }
 
@@ -20,8 +21,12 @@ export class TestArmorstoreComponent implements OnInit {
     this.store.dispatch(new armorActions.LoadArmors());
 
     this.armor$ = this.store.pipe(select(fromArmor.getArmors));
-    this.armor$.subscribe(val => console.log(val));
     this.errorMessage$ = this.store.pipe(select(fromArmor.getError));
+    this.selectedArmor$ = this.store.pipe(select(fromArmor.getSelectedArmor));
+  }
+
+  selectArmor(id: number): void {
+    this.store.dispatch(new armorActions.SetSelectedArmor(id));
   }
 
 }

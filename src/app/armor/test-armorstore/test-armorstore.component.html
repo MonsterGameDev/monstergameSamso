@@ -1,11 +1,27 @@
-<div *ngIf="armor$ | async as armor">
-    <h2>Armor List</h2>
-    <ul *ngFor="let a of armor">
-        <li><strong>Name: {{ a.armorName }}</strong></li>
-        <li>Level: {{ a.armorLevel }}</li>
-        <li>Type: {{ a.armorType }}</li>
-        <li>Health: {{ a.armorStats?.health }}</li>
-        <li>Power: {{ a.armorStats?.power }}</li>
-        <li>Defence: {{ a.armorStats?.defence }}</li>
-      </ul>    
+<div class="armor-container">
+    <div class="armor-list-container">
+        <div *ngIf="armor$ | async as armor">
+            <h2>Armor List</h2>
+            <ul *ngFor="let a of armor">
+                <li (click)="selectArmor(a.id)"><strong>Name: {{ a.armorName }}</strong></li>
+                <li>Level: {{ a.armorLevel }}</li>
+                <li>Type: {{ a.armorType }}</li>
+                <li>Health: {{ a.armorStats?.health }}</li>
+                <li>Power: {{ a.armorStats?.power }}</li>
+                <li>Defence: {{ a.armorStats?.defence }}</li>
+              </ul>    
+        </div>
+    </div>
+<div class="selected-armor-container">
+    <h2>Selected Armor</h2>
+    <div class="selected-armor" *ngIf="selectedArmor$ | async as a">
+        <strong>{{ a.armorName }}</strong>
+        <div>Level: {{ a.armorLevel }}</div>
+        <div>Type: {{ a.armorType }}</div>
+        <div>Health: {{ a.armorStats?.health }}</div>
+        <div>Power: {{ a.armorStats?.power }}</div>
+        <div>Defence: {{ a.armorStats?.defence }}</div>
+        
+    </div>
+</div>
 </div>

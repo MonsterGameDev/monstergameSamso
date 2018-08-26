@@ -79,7 +79,7 @@ export class DeleteArmorFail implements Action {
 
 export class SetSelectedArmor implements Action {
   readonly type = ArmorActionTypes.SET_SELECTED_ARMOR;
-  constructor(public payload: Armor) {}
+  constructor(public payload: number) {}
 }
 
 export class ClearSelectedArmor implements Action {

@@ -14,7 +14,7 @@ export enum ArmorTypeEnum {
 export interface Stats {
     health: number;
     power: number;
-    defence: number;
+    defense: number;
 }
 
 export interface ArmorState {
