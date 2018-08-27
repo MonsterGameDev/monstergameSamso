@@ -2,6 +2,7 @@ import { ArmorActions, ArmorActionTypes } from './armor.actions';
 import { ArmorState, ArmorTypeEnum, Armor} from './armor.interfaces';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 const initialState: ArmorState = {
     armor: [],
@@ -24,6 +25,31 @@ export function armorReducer(state: ArmorState = initialState, action: ArmorActi
                 armor: [],
                 error: action.payload
             };
+        case ArmorActionTypes.EDIT_ARMOR_SUCCESS:
+            const updatedArmorArray: Armor[] = state.armor
+                .map((item: Armor) => action.payload.id === item.id ? action.payload : item);
+            return {
+                ...state,
+                armor: updatedArmorArray,
+                selectedArmorId: action.payload.id,
+                error: ''
+            };
+        case ArmorActionTypes.EDIT_ARMOR_FAIL:
+            return {
+                ...state,
+                error: action.payload
+            };
+        case ArmorActionTypes.SAVE_ARMOR_SUCCESS:
+            return {
+                ...state,
+                armor: [...state.armor, action.payload],
+                error: ''
+            };
+        case ArmorActionTypes.SAVE_ARMOR_FAIL:
+            return {
+                ...state,
+                error: action.payload
+            };
         case ArmorActionTypes.SET_SELECTED_ARMOR:
             return {
                 ...state,
@@ -34,7 +60,7 @@ export function armorReducer(state: ArmorState = initialState, action: ArmorActi
                 ...state,
                 selectedArmorId: null
             };
-        case ArmorActionTypes.INITIALIZE_SELECTED_ARMOR:
+        case ArmorActionTypes.INITIALIZE_ARMOR:
             return {
                 ...state,
                 selectedArmorId: 0
@@ -66,11 +92,11 @@ export const getSelectedArmor = createSelector(
                 id: 0,
                 armorName: '',
                 armorType: ArmorTypeEnum.None,
-                armorLevel: 0,
+                armorLevel: null,
                 armorStats: {
-                    health: 0,
-                    power: 0,
-                    defense: 0
+                    health: null,
+                    power: null,
+                    defense: null
                 },
                 imgUrl: ''
             };
@@ -79,6 +105,8 @@ export const getSelectedArmor = createSelector(
         }
     }
 );
+
+
 
 export const getShowImage = createSelector(
     getFeatureArmorsState,

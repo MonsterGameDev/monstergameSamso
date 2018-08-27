@@ -11,12 +11,15 @@ export enum ArmorActionTypes {
   EDIT_ARMOR = '[Armor] Edit Armor',
   EDIT_ARMOR_SUCCESS = '[Armor] Edit Armor Success',
   EDIT_ARMOR_FAIL = '[Armor] Edit Armor Fail',
+  SAVE_ARMOR = '[Armor] Save Armor',
+  SAVE_ARMOR_SUCCESS = '[Armor] Save Armor Success',
+  SAVE_ARMOR_FAIL = '[Armor] Save Armor Fail',
   DELETE_ARMOR = '[Armor] Delete Armor',
   DELETE_ARMOR_SUCCESS = '[Armor] Delete Success',
   DELETE_ARMOR_FAIL = '[Armor] Delete Fail',
   SET_SELECTED_ARMOR = '[Armor] Set Selected Armor',
   CLEAR_SELECTED_ARMOR = '[Armor] Clear Selected Armor',
-  INITIALIZE_SELECTED_ARMOR = '[Armor] Initialize Selected Armor'
+  INITIALIZE_ARMOR = '[Armor] Initialize Selected Armor'
 }
 
 export class LoadArmors implements Action {
@@ -63,6 +66,21 @@ export class EditArmorFail implements Action {
   constructor(public payload: string) {}
 }
 
+export class CreateArmor implements Action {
+  readonly type = ArmorActionTypes.SAVE_ARMOR;
+  constructor(public payload: Armor) {}
+}
+
+export class CreateArmorSuccess implements Action {
+  readonly type = ArmorActionTypes.SAVE_ARMOR_SUCCESS;
+  constructor(public payload: Armor) {}
+}
+
+export class CreateArmorFail implements Action {
+  readonly type = ArmorActionTypes.SAVE_ARMOR_FAIL;
+  constructor(public payload: string) {}
+}
+
 export class DeleteArmor implements Action {
   readonly type = ArmorActionTypes.DELETE_ARMOR;
   constructor(public payload: number) {}
@@ -86,8 +104,8 @@ export class ClearSelectedArmor implements Action {
   readonly type = ArmorActionTypes.CLEAR_SELECTED_ARMOR;
 }
 
-export class InitializeSelectedArmor implements Action {
-  readonly type = ArmorActionTypes.INITIALIZE_SELECTED_ARMOR;
+export class InitializeArmor implements Action {
+  readonly type = ArmorActionTypes.INITIALIZE_ARMOR;
 }
 
 export type ArmorActions =
@@ -105,5 +123,8 @@ export type ArmorActions =
   | DeleteArmorFail
   | SetSelectedArmor
   | ClearSelectedArmor
-  | InitializeSelectedArmor
+  | InitializeArmor
+  | CreateArmor
+  | CreateArmorSuccess
+  | CreateArmorFail
   ;

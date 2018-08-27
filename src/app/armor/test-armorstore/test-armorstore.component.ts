@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Armor, ArmorState } from '../+state/armor.interfaces';
+import { Armor, ArmorState, ArmorTypeEnum } from '../+state/armor.interfaces';
 import { Store, select } from '@ngrx/store';
 import * as fromArmor from './../+state/armor.reducers';
 import * as armorActions from './../+state/armor.actions';
@@ -15,6 +15,10 @@ export class TestArmorstoreComponent implements OnInit {
   errorMessage$: Observable<string>;
   selectedArmor$: Observable<Armor>;
 
+
+  armor: Armor[];
+  selectedArmor: Armor;
+
   constructor(private store: Store<ArmorState>) { }
 
   ngOnInit() {
@@ -23,10 +27,38 @@ export class TestArmorstoreComponent implements OnInit {
     this.armor$ = this.store.pipe(select(fromArmor.getArmors));
     this.errorMessage$ = this.store.pipe(select(fromArmor.getError));
     this.selectedArmor$ = this.store.pipe(select(fromArmor.getSelectedArmor));
+
+    this.armor$.subscribe(a => this.armor = a);
+    this.selectedArmor$.subscribe(a => this.selectedArmor = a);
   }
 
   selectArmor(id: number): void {
     this.store.dispatch(new armorActions.SetSelectedArmor(id));
   }
 
+  addArmor() {
+    this.store.dispatch(new armorActions.InitializeArmor);
+  }
+
+  save(selectedArmor: Armor) {
+    const updatedArmor: Armor = {
+      armorName: 'Updated Name',
+      armorLevel: 99,
+      armorType: ArmorTypeEnum.None,
+      imgUrl: '1.jpg',
+      armorStats: {
+        health: 99,
+        power: 99,
+        defense: 99
+      }
+    };
+
+    const a = { ...this.selectedArmor, ...updatedArmor };
+
+    if (a.id === 0) {
+      this.store.dispatch(new armorActions.CreateArmor(a));
+    } else {
+      this.store.dispatch(new armorActions.EditArmor(a));
+    }
+  }
 }
