@@ -80,6 +80,7 @@ export class DataService {
     const url = `${this.baseUrl}/weapons/${weapon}`;
     return this._http.put<Weapon>(url, weapon, {headers: this.headers}).pipe(
       tap(() => console.log(`update weapon: ${JSON.stringify(weapon)}`)),
+      map(() => weapon),
       catchError(err => throwError(err))
     );
   }
