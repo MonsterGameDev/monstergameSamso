@@ -1,9 +1,9 @@
 export interface Weapon {
     id?: number;
     weaponName: string;
-    weaponStats: WeaponStatsEnum;
-    weaponLevel: number;
-    weaponBaseDamage: number;
+    weaponStats: WeaponStats;
+    weaponLevel?: number;
+    weaponBaseDamage?: number;
     imageUrl: string;
 }
 
@@ -14,6 +14,8 @@ export interface WeaponState {
     error?: string;
 }
 
-export enum WeaponStatsEnum {
-    None = 'None'
+export interface WeaponStats {
+    power?: number;
+    defence?: number;
+    damage?: number;
 }
