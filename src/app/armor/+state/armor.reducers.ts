@@ -65,6 +65,17 @@ export function armorReducer(state: ArmorState = initialState, action: ArmorActi
                 ...state,
                 selectedArmorId: 0
             };
+        case ArmorActionTypes.DELETE_ARMOR_SUCCESS:
+            return {
+                ...state,
+                armor: state.armor.filter((armor: Armor) => armor.id !== action.payload),
+                error: ''
+            };
+        case ArmorActionTypes.DELETE_ARMOR_FAIL:
+            return {
+                ...state,
+                error: action.payload
+            };
         default:
             return state;
     }

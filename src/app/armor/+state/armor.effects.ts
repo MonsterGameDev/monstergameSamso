@@ -49,5 +49,15 @@ export class ArmorEffects {
     )
   );
 
+  @Effect()
+  deleteArmor$: Observable<Action> = this.actions$.pipe(
+    ofType(armorActions.ArmorActionTypes.DELETE_ARMOR),
+    map((action: armorActions.DeleteArmor) => action.payload),
+    mergeMap((payload: number) => this.svc.deleteArmor(payload)
+    .pipe(
+      map(() => (new armorActions.DeleteArmorSuccess(payload))),
+      catchError(err => of(new armorActions.DeleteArmorFail(err)))
+    ))
+  );
 
 }

@@ -24,8 +24,9 @@
       <div>Power: {{ a.armorStats?.power }}</div>
       <div>Defence: {{ a.armorStats?.defense }}</div>
     </div>
-    <button (click)='save(a)'>UPDATE</button>
-    <button (click)='addArmor()'>ADD</button>
+    <button (click)="save(a)">UPDATE</button>
+    <button (click)="addArmor()">ADD</button>
+    <button (click)="deleteArmor()" *ngIf="selectedArmorId">DELETE</button>
     <div style="color: red;" *ngIf="errorMessage$ | async as err">
       Der opstod en fejl: {{ err }}
     </div>

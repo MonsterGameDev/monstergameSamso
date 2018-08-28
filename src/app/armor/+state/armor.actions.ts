@@ -88,6 +88,7 @@ export class DeleteArmor implements Action {
 
 export class DeleteArmorSuccess implements Action {
   readonly type = ArmorActionTypes.DELETE_ARMOR_SUCCESS;
+  constructor(public payload: number) {}
 }
 
 export class DeleteArmorFail implements Action {

@@ -14,10 +14,11 @@ export class TestArmorstoreComponent implements OnInit {
   armor$: Observable<Armor[]>;
   errorMessage$: Observable<string>;
   selectedArmor$: Observable<Armor>;
-
+  selectedArmorId$: Observable<number>;
 
   armor: Armor[];
   selectedArmor: Armor;
+  selectedArmorId: number;
 
   constructor(private store: Store<ArmorState>) { }
 
@@ -27,9 +28,11 @@ export class TestArmorstoreComponent implements OnInit {
     this.armor$ = this.store.pipe(select(fromArmor.getArmors));
     this.errorMessage$ = this.store.pipe(select(fromArmor.getError));
     this.selectedArmor$ = this.store.pipe(select(fromArmor.getSelectedArmor));
+    this.selectedArmorId$ = this.store.pipe(select(fromArmor.getSelectedArmorId));
 
     this.armor$.subscribe(a => this.armor = a);
     this.selectedArmor$.subscribe(a => this.selectedArmor = a);
+    this.selectedArmorId$.subscribe(id => this.selectedArmorId = id);
   }
 
   selectArmor(id: number): void {
@@ -38,6 +41,10 @@ export class TestArmorstoreComponent implements OnInit {
 
   addArmor() {
     this.store.dispatch(new armorActions.InitializeArmor);
+  }
+
+  deleteArmor(id: number) {
+    this.store.dispatch(new armorActions.DeleteArmor(this.selectedArmorId));
   }
 
   save(selectedArmor: Armor) {
