@@ -1,4 +1,5 @@
 export interface Weapon {
+    id?: number;
     weaponName: string;
     weaponStats: WeaponStatsEnum;
     weaponLevel: number;
@@ -7,10 +8,10 @@ export interface Weapon {
 }
 
 export interface WeaponState {
-    selectedWeapon: Weapon;
+    selectedWeaponId?: number;
     weapons: Weapon[];
     showImage: boolean;
-    error: string;
+    error?: string;
 }
 
 export enum WeaponStatsEnum {

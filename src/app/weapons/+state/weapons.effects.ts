@@ -49,7 +49,7 @@ export class WeaponsEffects {
     map((action: weaponActions.DeleteWeapon) => action.payload),
     mergeMap((payload: number) => this.svc.deleteArmor(payload)
       .pipe(
-        map((res: void) => (new weaponActions.DeleteWeaponSuccess())),
+        map((res: void) => (new weaponActions.DeleteWeaponSuccess(payload))),
         catchError(err => of(new weaponActions.DeleteWeaponFail(err)))
       ))
   );
