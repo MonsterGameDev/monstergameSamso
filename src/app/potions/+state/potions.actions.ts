@@ -71,7 +71,8 @@ export class DeletePotion implements Action {
 }
 
 export class DeletePotionSuccess implements Action {
-  readonly type = PotionsActionTypes.DELETE_POTION_SUCCESS;  constructor(public payload: ) {}
+  readonly type = PotionsActionTypes.DELETE_POTION_SUCCESS;
+  constructor(public payload: number) {}
 }
 
 export class DeletePotionFail implements Action {
@@ -97,7 +98,7 @@ export class ToggleShowImage implements Action {
 }
 
 
-export type PotionsActions = 
+export type PotionsActions =
   LoadPotions
   | LoadPotionsSuccess
   | LoadPotionsFail

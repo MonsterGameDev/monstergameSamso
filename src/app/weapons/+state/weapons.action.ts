@@ -74,6 +74,7 @@ export class DeleteWeapon implements Action {
 
 export class DeleteWeaponSuccess implements Action {
   readonly type = WeaponsActionTypes.DELETE_WEAPON_SUCCESS;
+  constructor(public payload: number) {}
 }
 
 export class DeleteWeaponFail implements Action {

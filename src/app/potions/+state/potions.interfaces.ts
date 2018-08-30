@@ -10,7 +10,7 @@ export interface PotionState {
     selectedPotionId: number;
     potions: Potion[];
     showImage: boolean;
-
+    error: string;
 }
 
 export enum PotionEffectTypeEnum {

@@ -37,9 +37,7 @@ export class WeaponsEffects {
   @Effect()
   updateWeapon$: Observable<Action> = this.actions$.pipe(
     ofType(weaponActions.WeaponsActionTypes.UPDATE_WEAPON),
-    map((action: weaponActions.UpdateWeapon) => {
-      return action.payload;
-    }),
+    map((action: weaponActions.UpdateWeapon) => action.payload),
     mergeMap((payload: Weapon) => this.svc.updateWeapon(payload)
       .pipe(
         map((weapon: Weapon) => (new weaponActions.UpdateWeaponSuccess(weapon))),
