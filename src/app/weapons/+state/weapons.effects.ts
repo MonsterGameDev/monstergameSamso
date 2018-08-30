@@ -36,7 +36,10 @@ export class WeaponsEffects {
 
   @Effect()
   updateWeapon$: Observable<Action> = this.actions$.pipe(
-    map((action: weaponActions.UpdateWeapon) => action.payload),
+    ofType(weaponActions.WeaponsActionTypes.UPDATE_WEAPON),
+    map((action: weaponActions.UpdateWeapon) => {
+      return action.payload;
+    }),
     mergeMap((payload: Weapon) => this.svc.updateWeapon(payload)
       .pipe(
         map((weapon: Weapon) => (new weaponActions.UpdateWeaponSuccess(weapon))),
@@ -46,8 +49,9 @@ export class WeaponsEffects {
 
   @Effect()
   $deleteWeapon: Observable<Action> = this.actions$.pipe(
+    ofType(weaponActions.WeaponsActionTypes.DELETE_WEAPON),
     map((action: weaponActions.DeleteWeapon) => action.payload),
-    mergeMap((payload: number) => this.svc.deleteArmor(payload)
+    mergeMap((payload: number) => this.svc.deleteWeapon(payload)
       .pipe(
         map((res: void) => (new weaponActions.DeleteWeaponSuccess(payload))),
         catchError(err => of(new weaponActions.DeleteWeaponFail(err)))

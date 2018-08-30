@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
 import { Armor } from '../armor/+state/armor.interfaces';
+import { Weapon } from '../weapons/+state/weapons.interfaces';
+import { Potion } from '../potions/+state/potions.interfaces';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { delay, catchError, tap, map } from 'rxjs/operators';
-import { Weapon } from '../weapons/+state/weapons.interfaces';
-import { error } from '@angular/compiler/src/util';
+import { Observable, throwError } from 'rxjs';
 
 
 @Injectable({
@@ -69,7 +69,7 @@ export class DataService {
   }
 
   createWeapon(weapon: Weapon): Observable<Weapon> {
-    const url = `${this.baseUrl}/weapons/${weapon}`;
+    const url = `${this.baseUrl}/weapons`;
     return this._http.post<Weapon>(url, weapon, {headers: this.headers}).pipe(
       tap(() => console.log(`createWeapon: Creating Weapon: ${JSON.stringify(weapon)}`)),
       catchError(err => throwError(err))
@@ -77,7 +77,7 @@ export class DataService {
   }
 
   updateWeapon(weapon: Weapon): Observable<Weapon> {
-    const url = `${this.baseUrl}/weapons/${weapon}`;
+    const url = `${this.baseUrl}/weapons`;
     return this._http.put<Weapon>(url, weapon, {headers: this.headers}).pipe(
       tap(() => console.log(`update weapon: ${JSON.stringify(weapon)}`)),
       map(() => weapon),
@@ -93,19 +93,44 @@ export class DataService {
     );
   }
 
-
-
-  private handleError(err) {
-    // let errorMessage: string;
-    // if (err.error instanceof ErrorEvent) {
-    //   errorMessage = `An error occurred: ${err.error.message}`;
-    // } else {
-    //   errorMessage = `Backend returned code ${err.status}: ${err.body.error}`;
-    // }
-    // console.error(err);
-    return throwError(err.message);
+// Potions
+  getAllPotions(): Observable<Potion[]> {
+    const url = `${this.baseUrl}/potion`;
+    return this._http.get<Potion[]>(url).pipe(
+      tap(() => console.log(`Getting all Potions`)),
+      catchError(err => throwError(err))
+    );
   }
 
+  getPotion(id: number): Observable<Potion> {
+    const url = `${this.baseUrl}/potion/${id}`;
+    return this._http.get<Potion>(url).pipe(
+      tap(() => console.log(`Getting all Potions`)),
+      catchError(err => throwError(err))
+    );
+  }
 
+  createPotion(potion: Potion): Observable<Potion> {
+    const url = `${this.baseUrl}/potion`;
+    return this._http.post<Potion>(url, potion, {headers: this.headers}).pipe(
+      tap(() => console.log(`Getting all Potions`)),
+      catchError(err => throwError(err))
+    );
+  }
 
+  updatePotion(potion: Potion): Observable<Potion> {
+    const url = `${this.baseUrl}/potion`;
+    return this._http.put<Potion>(url, potion, {headers: this.headers}).pipe(
+      tap(() => console.log(`Getting all Potions`)),
+      catchError(err => throwError(err))
+    );
+  }
+
+  deletePotion(id: number): Observable<void> {
+    const url = `${this.baseUrl}/potion/${id}`;
+    return this._http.delete<void>(url).pipe(
+      tap(() => console.log(`Getting all Potions`)),
+      catchError(err => throwError(err))
+    );
+  }
 }

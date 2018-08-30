@@ -1,3 +1,36 @@
-<p>
-  test-weaponsstore works!
-</p>
+<div class="container">
+  <div class="weapons-list-container">
+    <h2>Weapons List</h2>
+    <div class="weapons-list" *ngIf="weapons$ | async as w">
+      
+      <div class="weapon-details" *ngFor="let weapon of w">
+          <h3>{{ weapon.weaponName }}</h3>
+          <ul>
+            <li>{{ weapon.weaponLevel }}</li>
+            <li>{{ weapon.weaponBaseDamage }}</li>
+            <li>{{ weapon.weaponLevel }}</li>
+            <li>{{ weapon.imageUrl }}</li>
+            <li>{{ weapon.weaponStats?.power }}</li>
+            <li>{{ weapon.weaponStats?.defense }}</li>
+            <li>{{ weapon.weaponStats?.damage }}</li>
+          </ul>
+      </div>
+    </div>
+  </div>
+  <div class="selected-weapon-container">
+    <h2>Selected Weapon</h2>
+    <div class="selected-weapon" *ngIf="selectedWeapon$ | async as weapon">
+        <h3>Name: {{ weapon.weaponName }}</h3>
+        <ul>
+          <li>Level: {{ weapon.weaponLevel }}</li>
+          <li>BaseDamage: {{ weapon.weaponBaseDamage }}</li>
+          <li>Image: {{ weapon.imageUrl }}</li>
+          <li>Power: {{ weapon.weaponStats?.power }}</li>
+          <li>Defense. {{ weapon.weaponStats?.defense }}</li>
+          <li>Damage: {{ weapon.weaponStats?.damage }}</li>
+        </ul>
+    </div>
+    <button (click)='initialize()'>INIT</button>
+    <button (click)="save()">SAVE</button>
+  </div>
+</div>

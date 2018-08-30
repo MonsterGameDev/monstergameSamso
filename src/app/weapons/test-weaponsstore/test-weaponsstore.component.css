@@ -1,0 +1,21 @@
+.container {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow:row nowrap;
+}
+
+.weapons-list-container {
+    box-sizing: border-box;
+    flex-grow: 1;
+    width: 50%;
+    padding: 5px;
+    border: 2px solid black;
+}
+
+.selected-weapon-container {
+    box-sizing: border-box;
+    flex-grow: 1;
+    width: 50%;
+    padding: 5px;
+    border: 2px solid black;
+}
