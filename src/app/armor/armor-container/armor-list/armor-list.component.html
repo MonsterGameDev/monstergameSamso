@@ -1,0 +1,23 @@
+<div class="armor-list-container" *ngIf="armorList">
+  <div class="armor-list" *ngFor="let a of armorList">
+    <div class="item-name" (click)="selectArmor(a.id)">{{ a.armorName }}</div> 
+    <div class="item-details" *ngIf="displayDetails">
+      <span class="detail-title">Armor Type:</span>
+      <span class="detail-value">{{ a.armorType }}</span>
+      <span class="detail-title">Armor Level:</span>
+      <span class="detail-value">{{ a.armorLevel }}</span>
+      <span class="sub-list-header">Stats</span>
+      <span class="detail-title">Health:</span>
+      <span class="detail-value">{{ a.armorStats?.health }}</span>
+      <span class="detail-title">Power:</span>
+      <span class="detail-value">{{ a.armorStats?.power }}</span>
+      <span class="detail-title">Defence:</span>
+      <span class="detail-value">{{ a.armorStats?.defense }}</span>
+    </div>
+  </div>
+  <label of="showDetails">Show Details</label>
+  <input type="checkbox" id="showDetails" (change)="changeShowDetails($event.target.checked)"/>
+  <div class="error-message" *ngIf="error">
+    {{ error }}
+  </div>
+</div>

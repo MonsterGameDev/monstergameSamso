@@ -8,7 +8,16 @@ export interface Armor {
 }
 
 export enum ArmorTypeEnum {
-    None = 'None'
+    None = 'None',
+    Head= 'Head',
+    Shoulder= 'Shoulder',
+    Neck= 'Neck',
+    Arm= 'Arm',
+    Hand= 'Hand',
+    Torso= 'Torso',
+    Waist= 'Waist',
+    Leg= 'Leg',
+    Foot= 'Foot'
 }
 
 export interface Stats {
@@ -22,4 +31,5 @@ export interface ArmorState {
     armor: Armor[];
     selectedArmorId: number;
     error: string;
+    showDetails: boolean;
 }

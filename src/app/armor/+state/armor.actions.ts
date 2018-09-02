@@ -19,7 +19,8 @@ export enum ArmorActionTypes {
   DELETE_ARMOR_FAIL = '[Armor] Delete Fail',
   SET_SELECTED_ARMOR = '[Armor] Set Selected Armor',
   CLEAR_SELECTED_ARMOR = '[Armor] Clear Selected Armor',
-  INITIALIZE_ARMOR = '[Armor] Initialize Selected Armor'
+  INITIALIZE_ARMOR = '[Armor] Initialize Selected Armor',
+  TOGGLE_SHOW_DETAILS = '[Armor] Toggle Show Details'
 }
 
 export class LoadArmors implements Action {
@@ -109,6 +110,11 @@ export class InitializeArmor implements Action {
   readonly type = ArmorActionTypes.INITIALIZE_ARMOR;
 }
 
+export class ToggleShowDetails implements Action {
+  readonly type = ArmorActionTypes.TOGGLE_SHOW_DETAILS;
+  constructor(public payload: Boolean) {}
+}
+
 export type ArmorActions =
   LoadArmors
   | LoadArmorsSuccess
@@ -128,4 +134,5 @@ export type ArmorActions =
   | CreateArmor
   | CreateArmorSuccess
   | CreateArmorFail
+  | ToggleShowDetails
   ;

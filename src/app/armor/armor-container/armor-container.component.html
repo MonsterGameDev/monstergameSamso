@@ -1,0 +1,12 @@
+<div class="armor-container">
+  <app-armor-list
+    [armorList]="armorList$ | async"
+    [displayDetails]="displayDetails$ | async"
+    [error]="error$ | async"
+    (toggleShowDetails)="toggleShowDetails($event)"
+    (selectedArmor)="selectedArmor($event)"
+  >
+  </app-armor-list>
+
+  <app-armor-edit [selectedArmor]="selectedArmor$ | async"></app-armor-edit>
+</div>

@@ -14,8 +14,6 @@ import { PotionsModule } from './potions/potions.module';
 import { DataService } from './services/data.service';
 import { environment } from '../environments/environment';
 
-
-
 @NgModule({
   declarations: [
     AppComponent

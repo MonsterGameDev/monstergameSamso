@@ -8,7 +8,8 @@ const initialState: ArmorState = {
     armor: [],
     error: '',
     selectedArmorId: null,
-    showImage: false
+    showImage: false,
+    showDetails: false
 };
 
 export function armorReducer(state: ArmorState = initialState, action: ArmorActions) {
@@ -76,6 +77,11 @@ export function armorReducer(state: ArmorState = initialState, action: ArmorActi
                 ...state,
                 error: action.payload
             };
+        case ArmorActionTypes.TOGGLE_SHOW_DETAILS:
+            return {
+                ...state,
+                showDetails: action.payload
+            };
         default:
             return state;
     }
@@ -98,6 +104,7 @@ export const getSelectedArmor = createSelector(
     getFeatureArmorsState,
     getSelectedArmorId,
     (state: ArmorState, selectedArmorId: number): Armor => {
+        console.log('Selected Armor ID: ', selectedArmorId);
         if (selectedArmorId === 0) {
             return {
                 id: 0,
@@ -122,6 +129,11 @@ export const getSelectedArmor = createSelector(
 export const getShowImage = createSelector(
     getFeatureArmorsState,
     state => state.showImage
+);
+
+export const getShowDetails = createSelector(
+    getFeatureArmorsState,
+    state => state.showDetails
 );
 
 export const getError = createSelector(

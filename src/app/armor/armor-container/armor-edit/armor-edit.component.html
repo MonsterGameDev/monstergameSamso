@@ -1,0 +1,82 @@
+<div class="form-container">
+<h1>{{ armorFormHeader }}</h1>
+<form novalidate [formGroup]="armorForm" ngSubmit="save()">
+
+  <!-- Armor Name -->
+  <div class="field-container">
+    <div class="field-area">
+      <label of="armor-name" class="field-label">Name</label>
+      <input type="text" class="field-value" formControlName="armorName" [ngClass]="{'has-error': armorNameErrMsg}" />
+    </div>
+    <div class="err-container" *ngIf="armorNameErrMsg">
+      {{ armorNameErrMsg }}
+    </div>
+  </div>
+
+  <!-- Armor Level -->
+  <div class="field-container">
+    <div class="field-area">
+      <label of="armor-level" class="field-label">Level</label>
+      <input type="text" id="armor-level" class="field-value" formControlName="armorLevel" [ngClass]="{'has-error': armorLevelErrMsg}" />
+    </div>
+    <div class="err-container" *ngIf="armorLevelErrMsg">
+      {{ armorLevelErrMsg }}
+    </div>
+  </div>
+
+  <!-- Armor Type -->
+  <div class="field-container">
+    <div class="field-area">
+      <label of="armor-type" class="field-label">Type</label>
+      <select id="armor-type" class="field-value" formControlName="armorType" [ngClass]="{'has-error': armorTypeErrMsg}">
+        <option selected>Select Armor Type</option>
+        <option *ngFor="let key of keys" [ngValue]="armorTypeEnum[key]">{{ key }}</option>
+      </select>
+    </div>
+    <div class="err-container" *ngIf="armorTypeErrMsg">
+      {{ armorTypeErrMsg }}
+    </div>
+  </div>
+
+  <!-- Armor Specs-->
+  <div class="subHeader">
+    Armor Specs
+  </div>
+  <div class="specs">
+    <div class="field-group-container" [formGroupName]="armorStats">
+      
+      <!-- Health -->
+      <div class="field-area">
+        <label of="armor-health" class="field-label">Health</label>
+        <input type="text" id="armor-health" class="field-value" formControlName="health" [ngClass]="{'has-error': armorHealthErrMsg}" />
+      </div>
+      
+      <!-- Power -->
+      <div class="field-area">
+        <label of="armor-power" class="field-label">Power</label>
+        <input type="text" id="armor-power" class="field-value" formControlName="power" [ngClass]="{'has-error': armorPowerErrMsg}" />
+      </div>
+      
+      <!-- Defense -->
+      <div class="field-area">
+        <label of="armor-defense" class="field-label">Defense</label>
+        <input type="text" id="armor-defense" class="field-value" formControlName="defence" [ngClass]="{'has-error': armorDefenseErrMsg}" />
+      </div>
+    </div>
+    
+    <!-- Specs Error Container -->
+    <div class="err-container" *ngIf="armorLevelErrMsg">
+      {{ armorHealthErrMsg }}
+    </div>
+    <div class="err-container" *ngIf="armorLevelErrMsg">
+      {{ armorPowerErrMsg }}
+    </div>
+    <div class="err-container" *ngIf="armorLevelErrMsg">
+      {{ armorDefenseErrMsg }}
+    </div>
+  </div>
+  <div class="form-actions">
+    <button type="submit" class="btn-submit">SUBMIT</button>
+  </div>
+</form>
+</div>
