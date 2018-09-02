@@ -1,6 +1,6 @@
 <div class="form-container">
 <h1>{{ armorFormHeader }}</h1>
-<form novalidate [formGroup]="armorForm" ngSubmit="save()">
+<form novalidate [formGroup]="armorForm">
 
   <!-- Armor Name -->
   <div class="field-container">
@@ -29,7 +29,6 @@
     <div class="field-area">
       <label of="armor-type" class="field-label">Type</label>
       <select id="armor-type" class="field-value" formControlName="armorType" [ngClass]="{'has-error': armorTypeErrMsg}">
-        <option selected>Select Armor Type</option>
         <option *ngFor="let key of keys" [ngValue]="armorTypeEnum[key]">{{ key }}</option>
       </select>
     </div>
@@ -43,7 +42,7 @@
     Armor Specs
   </div>
   <div class="specs">
-    <div class="field-group-container" [formGroupName]="armorStats">
+    <div class="field-group-container" formGroupName="armorStats">
       
       <!-- Health -->
       <div class="field-area">
@@ -60,7 +59,7 @@
       <!-- Defense -->
       <div class="field-area">
         <label of="armor-defense" class="field-label">Defense</label>
-        <input type="text" id="armor-defense" class="field-value" formControlName="defence" [ngClass]="{'has-error': armorDefenseErrMsg}" />
+        <input type="text" id="armor-defense" class="field-value" formControlName="defense" [ngClass]="{'has-error': armorDefenseErrMsg}" />
       </div>
     </div>
     

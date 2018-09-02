@@ -4,7 +4,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterModule, Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
@@ -14,12 +14,14 @@ import { PotionsModule } from './potions/potions.module';
 import { DataService } from './services/data.service';
 import { environment } from '../environments/environment';
 
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     ArmorModule,
     WeaponsModule,
     PotionsModule,
