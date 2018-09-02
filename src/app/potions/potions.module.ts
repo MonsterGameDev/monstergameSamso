@@ -4,6 +4,9 @@ import { StoreModule } from '@ngrx/store';
 import * as fromPotions from './+state/potion.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { PotionEffects } from './+state/potion.effects';
+import { PotionsContainerComponent } from './potions-container/potions-container.component';
+import { PotionsListComponent } from './potions-container/potions-list/potions-list.component';
+import { PotionsEditComponent } from './potions-container/potions-edit/potions-edit.component';
 
 @NgModule({
   imports: [
@@ -11,6 +14,7 @@ import { PotionEffects } from './+state/potion.effects';
     StoreModule.forFeature('potions', fromPotions.potionReducer),
     EffectsModule.forFeature([PotionEffects])
   ],
-  declarations: []
+  declarations: [PotionsContainerComponent, PotionsListComponent, PotionsEditComponent],
+  exports: [PotionsContainerComponent]
 })
 export class PotionsModule { }

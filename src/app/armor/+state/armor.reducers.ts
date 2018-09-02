@@ -104,7 +104,6 @@ export const getSelectedArmor = createSelector(
     getFeatureArmorsState,
     getSelectedArmorId,
     (state: ArmorState, selectedArmorId: number): Armor => {
-        console.log('Selected Armor ID: ', selectedArmorId);
         if (selectedArmorId === 0) {
             return {
                 id: 0,

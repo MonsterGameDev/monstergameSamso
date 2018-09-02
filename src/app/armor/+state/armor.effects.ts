@@ -19,7 +19,6 @@ export class ArmorEffects {
     mergeMap((action: armorActions.LoadArmor) => this.svc.getArmor()
       .pipe(
         map((armors: Armor[]) => {
-          console.log('Im here');
           return new armorActions.LoadArmorsSuccess(armors);
         }),
         catchError ((err: any) => of(new armorActions.LoadArmorsFail(err)))
