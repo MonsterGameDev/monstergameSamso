@@ -1,3 +1,53 @@
-<p>
-  potions-edit works!
-</p>
+<div class="form-container">
+    <h1>{{ potionFormHeader}}</h1>
+    <form novalidate [formGroup]="potionsForm">
+  
+      <!-- Potion Name -->
+      <div class="field-container">
+        <div class="field-area">
+          <label of="potion-name" class="field-label">Name</label>
+          <input type="text" id="potion-name" class="field-value" formControlName="potionName" [ngClass]="{'has-error': potionNameErrMsg}" />
+        </div>
+        <div class="err-container" *ngIf="potionNameErrMsg">
+          {{ potionNameErrMsg }}
+        </div>
+      </div>
+  
+      <!-- Potion Strength -->
+      <div class="field-container">
+        <div class="field-area">
+          <label of="potion-strength" class="field-label">Strength</label>
+          <input type="text" id="potion-strength" class="field-value" formControlName="potionStrength" [ngClass]="{'has-error': potionStrengthErrMsg}" />
+        </div>
+        <div class="err-container" *ngIf="potionStrengthErrMsg">
+          {{ potionStrengthErrMsg }}
+        </div>
+      </div>
+  
+      <!-- Potion Effect Duration -->
+      <div class="field-container">
+        <div class="field-area">
+          <label of="potion-effect-duration" class="field-label">Effect Duration</label>
+          <input type="text" id="potion-effect-duration" class="field-value" formControlName="potionEffectDuration" [ngClass]="{'has-error': potionEffectDurationErrMsg}" />
+        </div>
+        <div class="err-container" *ngIf="potionEffectDurationErrMsg">
+          {{ potionEffectDurationErrMsg }}
+        </div>
+      </div>
+      <!-- Image Url -->
+  
+      <!-- Potion Effect Type-->
+          <div class="field-container">
+            <div class="field-area">
+              <label of="potion-effect-type" class="field-label">Effect Type</label>
+              <select id="potion-effect-type" class="field-value" formControlName="effectType" [ngClass]="{'has-error': potionEffectTypeErrMsg}">
+                <li *ngFor="let key of keys" [ngValue]="potionEffectTypeEnum[key]">{{ Key }}</li>
+              </select>
+            </div>
+            <div class="err-container" *ngIf="potionEffectTypeErrMsg">
+              {{ potionEffectTypeErrMsg }}
+            </div>
+          </div>
+    </form>
+  </div>
+  

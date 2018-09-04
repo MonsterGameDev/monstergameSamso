@@ -17,7 +17,7 @@ export enum PotionsActionTypes {
   DELETE_POTION_FAIL = '[Potion] Delete Potion Fail',
   SET_SELECTED_POTION = '[Potion] Set Selected Potion',
   CLEAR_SELECTED_POTION = '[Potion] Clear Selected Potion',
-  TOGGLE_SHOW_IMAGE = '[Potion] Toggle Show Image',
+  TOGGLE_SHOW_DETAILS = '[Potion] Toggle Show Details',
   INITIALIZE_SELECTED_POTION = '[Potion] Initialize Selected Potion'
 }
 
@@ -93,8 +93,9 @@ export class InitializeSelectedPotion implements Action {
   readonly type = PotionsActionTypes.INITIALIZE_SELECTED_POTION;
 }
 
-export class ToggleShowImage implements Action {
-  readonly type = PotionsActionTypes.TOGGLE_SHOW_IMAGE;
+export class ToggleShowDetails implements Action {
+  readonly type = PotionsActionTypes.TOGGLE_SHOW_DETAILS;
+  constructor(public payload: boolean) {}
 }
 
 
@@ -114,5 +115,5 @@ export type PotionsActions =
   | InitializeSelectedPotion
   | SetSelectedPotion
   | ClearSelectedPotion
-  | ToggleShowImage
+  | ToggleShowDetails
   ;

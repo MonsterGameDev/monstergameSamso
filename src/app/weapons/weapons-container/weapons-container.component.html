@@ -1,4 +1,8 @@
 <div class="weapons-container">
-    <app-weapons-list></app-weapons-list>
+    <app-weapons-list
+        [weapons]="weapons$ | async"
+        [showDetails]="showDetails$ | async"
+        (toggleShowDetails)="showDetails($event)"
+    ></app-weapons-list>
     <app-weapons-edit></app-weapons-edit>
 </div>

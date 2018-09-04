@@ -1,3 +1,83 @@
-<p>
-  weapons-edit works!
-</p>
+<div class="form-container">
+  <h1>{{ weaponFormHeader}}</h1>
+  <form novalidate [formGroup]="weaponsForm">
+
+    <!-- Weapon Name -->
+    <div class="field-container">
+      <div class="field-area">
+        <label of="weapon-name" class="field-label">Name</label>
+        <input type="text" id="weapon-name" class="field-value" formControlName="weaponName" [ngClass]="{'has-error': weaponNameErrMsg}" />
+      </div>
+      <div class="err-container" *ngIf="weaponNameErrMsg">
+        {{ weaponNameErrMsg }}
+      </div>
+    </div>
+
+    <!-- Weapon Level -->
+    <div class="field-container">
+      <div class="field-area">
+        <label of="weapon-level" class="field-label">Level</label>
+        <input type="text" id="weapon-level" class="field-value" formControlName="weaponLevel" [ngClass]="{'has-error': weaponLevelErrMsg}" />
+      </div>
+      <div class="err-container" *ngIf="weaponLevelErrMsg">
+        {{ weaponLevelErrMsg }}
+      </div>
+    </div>
+
+    <!-- Weapon Base Damage -->
+    <div class="field-container">
+      <div class="field-area">
+        <label of="weapon-base-damage" class="field-label">BaseDamage</label>
+        <input type="text" id="weapon-base-damage" class="field-value" formControlName="weaponBaseDamage" [ngClass]="{'has-error': weaponBaseDamageErrMsg}" />
+      </div>
+      <div class="err-container" *ngIf="weaponBaseDamageErrMsg">
+        {{ weaponBaseDamageErrMsg }}
+      </div>
+    </div>
+    <!-- Image Url -->
+
+    <!-- Weapon Stats Form Group-->
+    <div class="subHeader">
+      Weapon Stats
+    </div>
+    <div class="specs">
+      <div class="field-group-container" formGroupName="weaponStats">
+
+        <!-- Stat Power -->
+        <div class="field-container">
+          <div class="field-area">
+            <label of="weapon-stats-power" class="field-label">Power</label>
+            <input type="text" id="weapon-stats-power" class="field-value" formControlName="power" [ngClass]="{'has-error': weaponPowerErrMsg}" />
+          </div>
+          <div class="err-container" *ngIf="weaponPowerErrMsg">
+            {{ weaponPowerErrMsg }}
+          </div>
+        </div>
+
+        <!-- Stat Defense -->
+        <div class="field-container">
+          <div class="field-area">
+            <label of="weapon-stats-defense" class="field-label">Defense</label>
+            <input type="text" id="weapon-stats-defense" class="field-value" formControlName="Defense" [ngClass]="{'has-error': weaponDefenseErrMsg}" />
+          </div>
+          <div class="err-container" *ngIf="weaponDefenseErrMsg">
+            {{ weaponDefenseErrMsg }}
+          </div>
+        </div>
+
+        <!-- Stat Damage-->
+        <div class="field-container">
+          <div class="field-area">
+            <label of="weapon-stats-damage" class="field-label">Damage</label>
+            <input type="text" id="weapon-stats-damage" class="field-value" formControlName="Damage" [ngClass]="{'has-error': weaponDamageErrMsg}" />
+          </div>
+          <div class="err-container" *ngIf="weaponDamageErrMsg">
+            {{ weaponDamageErrMsg }}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </form>
+</div>

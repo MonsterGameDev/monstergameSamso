@@ -52,6 +52,7 @@ export class DataService {
 
   //#endregion armor
 
+  //#region Weapons
   getAllWeapons(): Observable<Weapon[]> {
     const url = `${this.baseUrl}/weapons`;
     return this._http.get<Weapon[]>(url).pipe(
@@ -92,10 +93,11 @@ export class DataService {
       catchError(err => throwError(err))
     );
   }
+//#endregion Weapons
 
-// Potions
+//#region Potions
   getAllPotions(): Observable<Potion[]> {
-    const url = `${this.baseUrl}/potion`;
+    const url = `${this.baseUrl}/potions`;
     return this._http.get<Potion[]>(url).pipe(
       tap(() => console.log(`Getting all Potions`)),
       catchError(err => throwError(err))
@@ -103,7 +105,7 @@ export class DataService {
   }
 
   getPotion(id: number): Observable<Potion> {
-    const url = `${this.baseUrl}/potion/${id}`;
+    const url = `${this.baseUrl}/potions/${id}`;
     return this._http.get<Potion>(url).pipe(
       tap(() => console.log(`Getting all Potions`)),
       catchError(err => throwError(err))
@@ -111,7 +113,7 @@ export class DataService {
   }
 
   createPotion(potion: Potion): Observable<Potion> {
-    const url = `${this.baseUrl}/potion`;
+    const url = `${this.baseUrl}/potions`;
     return this._http.post<Potion>(url, potion, {headers: this.headers}).pipe(
       tap(() => console.log(`Getting all Potions`)),
       catchError(err => throwError(err))
@@ -119,7 +121,7 @@ export class DataService {
   }
 
   updatePotion(potion: Potion): Observable<Potion> {
-    const url = `${this.baseUrl}/potion`;
+    const url = `${this.baseUrl}/potions`;
     return this._http.put<Potion>(url, potion, {headers: this.headers}).pipe(
       tap(() => console.log(`Getting all Potions`)),
       catchError(err => throwError(err))
@@ -127,10 +129,11 @@ export class DataService {
   }
 
   deletePotion(id: number): Observable<void> {
-    const url = `${this.baseUrl}/potion/${id}`;
+    const url = `${this.baseUrl}/potions/${id}`;
     return this._http.delete<void>(url).pipe(
       tap(() => console.log(`Getting all Potions`)),
       catchError(err => throwError(err))
     );
   }
+  //#endregion Potions
 }

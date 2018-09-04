@@ -1,4 +1,8 @@
 <div class="potions-container">
-    <app-potions-list></app-potions-list>
+    <app-potions-list
+        [potions]="potions$ | async"
+        [showDetails]="showDetails$ | async"
+        (toggleShowDetails)="toggleShowDetails($event)"
+    ></app-potions-list>
     <app-potions-edit></app-potions-edit>
 </div>

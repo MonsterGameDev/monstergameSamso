@@ -23,7 +23,8 @@ export const getSelectedPotion = createSelector(
                 potionEffectDuration: null,
                 potionEffectType: PotionEffectTypeEnum.None,
                 potionName: 'New Potion',
-                potionStrength: null
+                potionStrength: null,
+                imageUrl: ''
             };
         } else {
             return selectedPotionId ? state.potions.find(p => p.id === selectedPotionId) : null;
@@ -31,9 +32,9 @@ export const getSelectedPotion = createSelector(
     }
 );
 
-export const showImage = createSelector(
+export const getShowDetails = createSelector(
     getPotionsFeatureState,
-    state => state.showImage
+    state => state.showDetails
 );
 
 export const getError = createSelector(

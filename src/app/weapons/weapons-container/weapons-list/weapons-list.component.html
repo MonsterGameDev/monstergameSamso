@@ -1,3 +1,21 @@
-<p>
-  weapons-list works!
-</p>
+<div class="weapons-list-container" *ngIf="weapons">
+    <h2>Weapons List</h2>
+    <div class="weapons-list" *ngFor="let w of weapons">
+      <div class="item-name" (click)="selectWeapons(w.id)">{{ w.weaponName }}</div>
+      <div class="item-details" *ngIf="showDetails">
+        <span class="detail-title">Weapon Level</span>
+        <span class="detail-value">{{ w.weaponLevel }}</span>
+        <span class="detail-title">Weapon Basedamage</span>
+        <span class="detail-value">{{ w.weaponBaseDamage }}</span>
+        <div class="sub-header">Weapon Stats</div>
+        <span class="detail-title">Power</span>
+        <span class="detail-value">{{ w.weaponStats?.power }}</span>
+        <span class="detail-title">Defense</span>
+        <span class="detail-value">{{ w.weaponStats?.defense }}</span>
+        <span class="detail-title">Damage</span>
+        <span class="detail-value">{{ w.weaponStats?.damage }}</span>
+      </div>
+    </div>
+    <label for="showDetails">Show Details</label>
+    <input type="checkbox" id="showDetails" (change)="changeShowDetails($event.target.checked)" />
+  </div>

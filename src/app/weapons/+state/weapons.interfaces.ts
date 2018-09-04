@@ -10,12 +10,12 @@ export interface Weapon {
 export interface WeaponState {
     selectedWeaponId?: number;
     weapons: Weapon[];
-    showImage: boolean;
+    showDetails: boolean;
     error?: string;
 }
 
 export interface WeaponStats {
     power?: number;
-    defence?: number;
+    defense?: number;
     damage?: number;
 }

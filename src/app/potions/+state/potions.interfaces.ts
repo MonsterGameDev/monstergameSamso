@@ -4,12 +4,13 @@ export interface Potion {
     potionStrength: number;
     potionEffectDuration: number;
     potionEffectType: PotionEffectTypeEnum;
+    imageUrl: string;
 }
 
 export interface PotionState {
     selectedPotionId: number;
     potions: Potion[];
-    showImage: boolean;
+    showDetails: boolean;
     error: string;
 }
 

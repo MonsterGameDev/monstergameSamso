@@ -2,9 +2,9 @@ import { PotionState, Potion, PotionEffectTypeEnum } from './potions.interfaces'
 import { PotionsActions, PotionsActionTypes, SetSelectedPotion } from './potions.actions';
 
 const initialState: PotionState = {
-    potions:[],
+    potions: [],
     selectedPotionId: null,
-    showImage: false,
+    showDetails: false,
     error: null
 };
 
@@ -70,10 +70,10 @@ export function potionReducer(state: PotionState = initialState, action: Potions
                 ...state,
                 selectedPotionId: null
             };
-        case PotionsActionTypes.TOGGLE_SHOW_IMAGE:
+        case PotionsActionTypes.TOGGLE_SHOW_DETAILS:
             return {
                 ...state,
-                showImage: !state.showImage
+                showDetails: action.payload
             };
         default:
             return state;

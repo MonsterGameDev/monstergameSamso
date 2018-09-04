@@ -26,7 +26,7 @@ export const getSelectedWeapon = createSelector(
                 weaponName: 'New',
                 weaponStats: {
                     power: null,
-                    defence: null,
+                    defense: null,
                     damage: null
                 }
             };
@@ -36,9 +36,9 @@ export const getSelectedWeapon = createSelector(
     }
 );
 
-export const getShowImage = createSelector(
+export const getShowDetails = createSelector(
     getWeaponsFeatureState,
-    state => state.showImage
+    state => state.showDetails
 );
 
 export const getError = createSelector(

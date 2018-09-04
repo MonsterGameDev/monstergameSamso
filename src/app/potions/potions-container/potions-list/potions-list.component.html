@@ -1,3 +1,18 @@
-<p>
-  potions-list works!
-</p>
+<div class="potions-list-container" *ngIf="potions">
+  <h2>Potions List</h2>
+  <div class="potion-list" *ngFor="let p of potions">
+    <div class="item-name" (click)="selectPotion(p.id)">{{ p.potionName }}</div>
+    <div class="item-details" *ngIf="showDetails">
+      <span class="detail-title">Potion Name</span>
+      <span class="detail-value">{{ p.potionName }}</span>
+      <span class="detail-title">Potion Strength</span>
+      <span class="detail-value">{{ p.potionStrength }}</span>
+      <span class="detail-title">Effect Duration (secs)</span>
+      <span class="detail-value">{{ p.potionEffectDuration }}</span>
+      <span class="detail-title">Effect Type</span>
+      <span class="detail-value">{{ potionEffectType }}</span>
+    </div>
+  </div>
+  <label for="showDetails">Show Details</label>
+  <input type="checkbox" id="showDetails" (change)="changeShowDetails($event.target.checked)" />
+</div>

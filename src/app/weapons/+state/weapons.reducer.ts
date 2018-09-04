@@ -6,7 +6,7 @@ export const initialState: WeaponState = {
   error: null,
   selectedWeaponId: 0,
   weapons: [],
-  showImage: false
+  showDetails: false
 };
 
 export function reducer(state: WeaponState = initialState, action: WeaponsActions): WeaponState {
@@ -68,10 +68,10 @@ export function reducer(state: WeaponState = initialState, action: WeaponsAction
         ...state,
         selectedWeaponId: null
       };
-    case WeaponsActionTypes.TOGGLE_SHOW_IMAGE:
+    case WeaponsActionTypes.TOGGLE_SHOW_DETAILS:
       return {
         ...state,
-        showImage: !state.showImage
+        showDetails: action.payload
       };
     case WeaponsActionTypes.INITIALIZE_WEAPON:
       return {

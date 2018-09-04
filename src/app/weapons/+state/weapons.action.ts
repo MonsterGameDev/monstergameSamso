@@ -17,7 +17,7 @@ export enum WeaponsActionTypes {
   SET_SELECTED_WEAPON = '[Weapons] Set Selected Weapon',
   CLEAR_SELECTED_WEAPON = '[Weapons] Clear Selected Weapon',
   INITIALIZE_WEAPON = '[Weapons] Initialize Weapons',
-  TOGGLE_SHOW_IMAGE = '[Weapons] Toggle Show Image'
+  TOGGLE_SHOW_DETAILS = '[Weapons] Toggle Show Details'
 }
 
 export class LoadWeapons implements Action {
@@ -95,8 +95,9 @@ export class InitializeWeapon implements Action {
   readonly type = WeaponsActionTypes.INITIALIZE_WEAPON;
 }
 
-export class ToggleShowImage implements Action {
-  readonly type = WeaponsActionTypes.TOGGLE_SHOW_IMAGE;
+export class ToggleShowDetails implements Action {
+  readonly type = WeaponsActionTypes.TOGGLE_SHOW_DETAILS;
+  constructor(public payload: boolean) {}
 }
 
 
@@ -116,6 +117,6 @@ export type WeaponsActions =
   | DeleteWeaponFail
   | SetSelectedWeapon
   | ClearSelectedWeapon
-  | ToggleShowImage
+  | ToggleShowDetails
   | InitializeWeapon
   ;

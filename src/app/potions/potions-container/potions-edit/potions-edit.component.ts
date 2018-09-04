@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PotionEffectTypeEnum } from '../../+state/potions.interfaces';
 
 @Component({
   selector: 'app-potions-edit',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./potions-edit.component.scss']
 })
 export class PotionsEditComponent implements OnInit {
-
+  keys: string[];
+  potionEffectTypeEnum = PotionEffectTypeEnum;
   constructor() { }
 
   ngOnInit() {
