@@ -30,7 +30,7 @@ export class ArmorEditComponent implements OnInit, OnChanges {
   };
 
   private levelErrorMessages = {
-    requires: 'Armor Level is a required field',
+    required: 'Armor Level is a required field',
     min: 'Armor Level must be a 0 or more',
     max: 'Armor Level cannot be more than 50'
   };

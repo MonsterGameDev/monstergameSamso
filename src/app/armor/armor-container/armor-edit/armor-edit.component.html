@@ -29,7 +29,8 @@
     <div class="field-area">
       <label of="armor-type" class="field-label">Type</label>
       <select id="armor-type" class="field-value" formControlName="armorType" [ngClass]="{'has-error': armorTypeErrMsg}">
-        <option *ngFor="let key of keys" [ngValue]="armorTypeEnum[key]">{{ key }}</option>
+        <option *ngFor="let key of keys" 
+        [ngValue]="armorTypeEnum[key]">{{ key }}</option>
       </select>
     </div>
     <div class="err-container" *ngIf="armorTypeErrMsg">

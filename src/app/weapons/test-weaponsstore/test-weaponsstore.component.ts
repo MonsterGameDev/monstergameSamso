@@ -40,7 +40,7 @@ export class TestWeaponsstoreComponent implements OnInit {
       weaponName: 'Æble Kniv',
       weaponStats: {
         power: 1,
-        defence: 2,
+        defense: 2,
         damage: 3,
       },
       weaponLevel: 5,
@@ -52,7 +52,7 @@ export class TestWeaponsstoreComponent implements OnInit {
       weaponName: 'Æble Kniv Updated',
       weaponStats: {
         power: 1,
-        defence: 2,
+        defense: 2,
         damage: 3,
       },
       weaponLevel: 5,

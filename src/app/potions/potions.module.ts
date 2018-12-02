@@ -7,12 +7,14 @@ import { PotionEffects } from './+state/potion.effects';
 import { PotionsContainerComponent } from './potions-container/potions-container.component';
 import { PotionsListComponent } from './potions-container/potions-list/potions-list.component';
 import { PotionsEditComponent } from './potions-container/potions-edit/potions-edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     StoreModule.forFeature('potions', fromPotions.potionReducer),
-    EffectsModule.forFeature([PotionEffects])
+    EffectsModule.forFeature([PotionEffects]),
+    ReactiveFormsModule
   ],
   declarations: [PotionsContainerComponent, PotionsListComponent, PotionsEditComponent],
   exports: [PotionsContainerComponent]

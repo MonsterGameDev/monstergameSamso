@@ -58,7 +58,7 @@
         <div class="field-container">
           <div class="field-area">
             <label of="weapon-stats-defense" class="field-label">Defense</label>
-            <input type="text" id="weapon-stats-defense" class="field-value" formControlName="Defense" [ngClass]="{'has-error': weaponDefenseErrMsg}" />
+            <input type="text" id="weapon-stats-defense" class="field-value" formControlName="defense" [ngClass]="{'has-error': weaponDefenseErrMsg}" />
           </div>
           <div class="err-container" *ngIf="weaponDefenseErrMsg">
             {{ weaponDefenseErrMsg }}
@@ -69,7 +69,7 @@
         <div class="field-container">
           <div class="field-area">
             <label of="weapon-stats-damage" class="field-label">Damage</label>
-            <input type="text" id="weapon-stats-damage" class="field-value" formControlName="Damage" [ngClass]="{'has-error': weaponDamageErrMsg}" />
+            <input type="text" id="weapon-stats-damage" class="field-value" formControlName="damage" [ngClass]="{'has-error': weaponDamageErrMsg}" />
           </div>
           <div class="err-container" *ngIf="weaponDamageErrMsg">
             {{ weaponDamageErrMsg }}
